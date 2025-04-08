@@ -9,7 +9,6 @@
     <%= csp_meta_tag %>
 
     <%= yield :head %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -20,13 +19,15 @@
 
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "rails-ujs" %>
   </head>
 
   <body style="height:100%;">
     <% if controller.controller_path.starts_with?('admin') %>
-      <%= render 'layouts/admin/header' %> <!-- Carrega o cabeçalho para a área administrativa -->
+      <%= render 'layouts/admin/header' %> 
     <% end %>
 
-    <%= content_for?(:content) ? yield(:content) : yield %> <!-- Renderiza o conteúdo principal -->
+    <%= content_for?(:content) ? yield(:content) : yield %> 
   </body>
 </html>
